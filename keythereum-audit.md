@@ -19,7 +19,7 @@
 		* 3.2.6 - [Remove validator package](#heading-3.2.6)
 		* 3.2.7 - [Use `process.browser` directly](#heading-3.2.7)
 		* 3.2.8 - [Use `keccak` package](#heading-3.2.8)
-* 4 - [Overall Feedback](#heading-4)
+* 4 - [Overall Feedback & Auditors](#heading-4)
 	* 4.1 - [Gustav Simonsson](#heading-4.1)
 	* 4.2 - [Aaron Davis](#heading-4.2)
 	* 4.3 - [Maciej Hirsz](#heading-4.3)
@@ -303,20 +303,32 @@ Use the `keccak.js` package directly.
 
 --------------------------------------------------
 
-# <a id="heading-4"/> Overall Feedback
+# <a id="heading-4"/> Overall Feedback & Auditors
 
 ## <a id="heading-4.1"/> Gustav Simonsson
+
+* [Github](https://github.com/Gustav-Simonsson)
+* [Twitter](https://twitter.com/classygustav)
 
 >Looks good, can’t find anything wrong on first pass through code. Maybe worth double checking by running tests also against these fixtures – if padding always works, e.g. if a generated key is less than 32 bytes (I’m guessing this would have been caught by the exhaustive tests though).
 
 ## <a id="heading-4.2"/> Aaron Davis
 
+* [GitHub](https://github.com/kumavis)
+* [Twitter](https://twitter.com/kumavis_)
+
 > ANYTHING?
 
 ## <a id="heading-4.3"/> Maciej Hirsz
 
+* [Github](https://github.com/maciejhirsz)
+* [Twitter](https://twitter.com/maciejhirsz)
+
 > ANYTHING?
 
 ## <a id="heading-4.4"/> Krill Fomichev
+
+* [Github](https://github.com/fanatid)
+* [Twitter](https://twitter.com/_fanatid)
 
 > ANYTHING?

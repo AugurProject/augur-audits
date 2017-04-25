@@ -12,6 +12,6 @@
 @tom
 
 * PGP sign audit report w/ Foundations key when complete
-* Check all links work
-* Add authors section with their contact infomation
+* ---Check all links work---
+* ---Add authors section with their contact infomation---
 * Make public repo in Augur `audit-reports` (?) that will contain all post-mortems?
