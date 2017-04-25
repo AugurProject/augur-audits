@@ -273,7 +273,7 @@ Simplifying the creation of private keys and the generation of a random salt.
 
 --------------------------------------------------
 
-### <a id="heading-3.2.5"/> Remove validator package
+### <a id="heading-3.2.6"/> Remove validator package
 
 Auditor: [Krill Fomichev](https://github.com/fanatid)
 
@@ -283,7 +283,7 @@ Removing the validator package and implimenting our own validators.
 
 --------------------------------------------------
 
-### <a id="heading-3.2.6"/> Use `process.browser` directly
+### <a id="heading-3.2.7"/> Use `process.browser` directly
 
 Auditor: [Krill Fomichev](https://github.com/fanatid)
 
@@ -293,7 +293,7 @@ Use the `process.browser` call directly.
 
 --------------------------------------------------
 
-### <a id="heading-3.2.7"/> Use `keccak` package
+### <a id="heading-3.2.8"/> Use `keccak` package
 
 Auditor: [Krill Fomichev](https://github.com/fanatid)
 
