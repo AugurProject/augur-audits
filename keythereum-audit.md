@@ -207,7 +207,9 @@ This is not the only function where it happens, but it is the first one - `ciphe
 
 This function will produce correct results only if the first part of `ciphertext` is encoded without base64 padding - that is, if the length of the buffer encoded to base64 is divisible by 3 (every subsequent 3 bytes can be tightly encoded as 4 base64 bytes without padding).
 
-**Example:** ASCII `"fooba"` encoded to base64 produces `"Zm9vYmE="`. ASCII `"r"` encoded to base64 produces `"cg=="`.The concatenated product is thus `"Zm9vYmE=cg=="`, which is different from when ASCII `"foobar"` is concatenated before encoding, producing `"Zm9vYmFy"` (notice lack of padding since length is divisble by 3 here).
+**Example:** 
+
+ASCII `"fooba"` encoded to base64 produces `"Zm9vYmE="`. ASCII `"r"` encoded to base64 produces `"cg=="`.The concatenated product is thus `"Zm9vYmE=cg=="`, which is different from when ASCII `"foobar"` is concatenated before encoding, producing `"Zm9vYmFy"` (notice lack of padding since length is divisble by 3 here).
 
 The results should be concatenated as buffers using `Buffer.concat`, and only then encoded, if necessary.
 
