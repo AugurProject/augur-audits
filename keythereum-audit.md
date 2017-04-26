@@ -37,18 +37,13 @@ This document has been cryptographically signed by the Forecast Foundation to en
 
 Keythereum is a JavaScript tool to generate, import and export Ethereum keys. This provides a simple way to use the same account locally and in web wallets. It can be used for verifiable cold storage wallets.  Keythereum uses the same key derivation functions (PBKDF2-SHA256 or scrypt), symmetric ciphers (AES-128-CTR or AES-128-CBC), and message authentication codes as geth. You can export your generated key to file, copy it to your data directory's keystore, and immediately start using it in your local Ethereum client.
 
-The [keythereum](https://github.com/ethereumjs/keythereum) repository lives in the [ethereumjs](https://github.com/ethereumjs) group on GitHub.
-
 # <a id="heading-2"/> Overview
 
 ## <a id="heading-2.1"/>Source Code
 
-The ENS source code is publicly available in the `keythereum/master` branch of the Keythereum Github
-repository.
+The [keythereum](https://github.com/ethereumjs/keythereum) repository lives in the [ethereumjs](https://github.com/ethereumjs) group on GitHub.  Source code is publicly available in the repository's `master` branch.
 
-[https://github.com/ethereumjs/keythereum](https://github.com/ethereumjs/keythereum)
-
-This audit covers the following source files:
+The audit covered the following source files:
 
 - `./index.js`
 - `./exports.js`
