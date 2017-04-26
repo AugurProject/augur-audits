@@ -61,8 +61,6 @@ The audit covered the following source files:
 - [chriso/validator](https://github.com/chriso/validator.js): [PR #31](https://github.com/ethereumjs/keythereum/pull/31)
 - [drostie/sha3-js](https://github.com/drostie/sha3-js): [PR #35](https://github.com/ethereumjs/keythereum/pull/35)
 
---------------------------------------------------
-
 ## Changes to functions
 
 ### `create`
