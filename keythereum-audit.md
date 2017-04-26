@@ -25,7 +25,7 @@
 
 # <a id="heading-1"/> Introduction
 
-The Keythereum library has been audited by [Kirill Fomichev](https://github.com/fanatid), [Maciej Hirsz](https://github.com/maciejhirsz), and [Gustav Simonsson](https://github.com/gustav-simonsson) during March to April 2017. The findings of the audit are presented in this document.
+The Keythereum library has been audited by [Kirill Fomichev](https://github.com/fanatid), [Maciej Hirsz](https://github.com/maciejhirsz), and [Gustav Simonsson](https://github.com/gustav-simonsson) during March-April 2017. The findings of the audit are presented in this document.
 
 ## <a id="heading-1.1"/> Authenticity
 
@@ -49,174 +49,113 @@ The audit covered the following source files:
 
 # <a id="heading-3"/> Audit Results
 
-## Summary
+### Changes to dependencies
 
-### <a id="heading-3.1.1"/> `str2buf`
+#### Added
 
-Auditor: [Maciej Hirsz](github.com/maciejhirsz) and [Kirill Fomichev](https://github.com/fanatid)
+- [cryptocoinjs/keccak](https://github.com/cryptocoinjs/keccak): [PR #35](https://github.com/ethereumjs/keythereum/pull/35)
 
-Pull Request: [PR #25](https://github.com/ethereumjs/keythereum/pull/25)
+#### Removed
 
-#### Summary
-
-This function has been simplified and added to keythereum's public API.  Detailed unit tests were added for `str2buf` in `test/keys.js`.
-
---------------------------------------------------
-
-### <a id="heading-3.1.2"/> `hex2utf16le`
-
-Auditor: [Maciej Hirsz](github.com/maciejhirsz) and [Kirill Fomichev](https://github.com/fanatid)
-
-Pull Request: [PR #26](https://github.com/ethereumjs/keythereum/pull/26)
-
-#### Summary
-
-This function has been removed from keythereum, since it is now using a [keccak](https://github.com/cryptocoinjs/keccak) module that accepts a raw `Buffer` (byte array) input.
+- [indutny/elliptic](https://github.com/indutny/elliptic): [PR #24](https://github.com/ethereumjs/keythereum/pull/24)
+- [ethereumjs/ethereumjs-util](https://github.com/ethereumjs/ethereumjs-util): [PR #29](https://github.com/ethereumjs/keythereum/pull/29)
+- [chriso/validator](https://github.com/chriso/validator.js): [PR #31](https://github.com/ethereumjs/keythereum/pull/31)
+- [drostie/sha3-js](https://github.com/drostie/sha3-js): [PR #35](https://github.com/ethereumjs/keythereum/pull/35)
 
 --------------------------------------------------
 
-### <a id="heading-3.1.3"/> `encrypt`
+### Changes to functions
 
-Auditor: [Maciej Hirsz](github.com/maciejhirsz)
+#### `create`
 
-#### Input and output encoding:
+- [PR #30](https://github.com/ethereumjs/keythereum/pull/30): Simplify create
 
-Kind of following on `str2buf` issues described above. `plaintext` is described as "Text to be encrypted". The correct description should be "Data to be encrypted". The use of the word "text" would suggest that I can safely pass any JavaScript string and have it encrypted, however I have no guarantee how that encryption will proceed, will my text be converted to a buffer using a base64, hexadecimal or a utf8 codec?
-
-What if my input is intended to be base64 encoded, but I made an error somewhere in my own code and my base64 is malformatted - I should get an error when trying to use such malformatted input, but instead my input can be converted a buffer as UTF-8 (or worse, hexadecimal), producing an incorrect result.
-
-An option that would be idiomatic to Node.js' `crypto` module would be to allow the consumer of the API to define the encoding of the input as well as the output (more on that later). On the same note, instead of always returning a base64 encoded string, returning a `Buffer` by default, with an option to convert it to a String would be beneficial (or skipping that step altogether and delegating the user to use `.toString(encoding)`).
-
-#### Unnecessary encoding and decoding back to back:
-
-This is not the only function where it happens, but it is the first one - `cipher.update` handles `Buffers` by default, `plaintext` is already converted to a `Buffer`, encoding it as a hexadecimal string only to have it parsed back to a Buffer is completely unnecessary.
-
-#### Concatenating base64 strings is unsafe:
-
-This function will produce correct results only if the first part of `ciphertext` is encoded without base64 padding - that is, if the length of the buffer encoded to base64 is divisible by 3 (every subsequent 3 bytes can be tightly encoded as 4 base64 bytes without padding).
-
-**Example:** 
-
-ASCII `"fooba"` encoded to base64 produces `"Zm9vYmE="`. ASCII `"r"` encoded to base64 produces `"cg=="`.The concatenated product is thus `"Zm9vYmE=cg=="`, which is different from when ASCII `"foobar"` is concatenated before encoding, producing `"Zm9vYmFy"` (notice lack of padding since length is divisble by 3 here).
-
-The results should be concatenated as buffers using `Buffer.concat`, and only then encoded, if necessary.
+This function was simplified and edited to improve its readability.
 
 --------------------------------------------------
 
-### <a id="heading-3.2.1"/> `deriveKey` silently fails for empty passwords
+#### `deriveKey`
 
-Auditor: [Maciej Hirsz](github.com/maciejhirsz)
+- [PR #20](https://github.com/ethereumjs/keythereum/issues/20) deriveKey silently fails for empty passwords
 
-Pull Request: [PR #19](https://github.com/ethereumjs/keythereum/issues/19)
-
-`deriveKey` internally performs a `if (password && salt)` before proceeding. This works fine for most scenarios, but will fail when `password` is an empty string (which should still be a valid use case).
-
-Additionally when it does fail, it does not throw an informative exception, it just returns undefined and tends to cause a confusing error somewhere down the line (calling `slice` of `undefined` and what not).
-
-**Suggested tweaks:**
-
-* Change the password check to `password != null` or `typeof password === 'string'`.
-
-* When either `password` or `salt` are missing, throw an exception.
+An initial check for `undefined` or `null` has been added to `deriveKey`.  This function now throws an `"Must provide password and salt to derive a key"` error if password or salt are not provided.
 
 --------------------------------------------------
 
-### <a id="heading-3.2.2"/> Remove elliptic
+#### `decrypt`
 
-Auditor: [Kirill Fomichev](https://github.com/fanatid)
+- [commit 016e0d1](https://github.com/ethereumjs/keythereum/commit/016e0d12da24af53063b8688bc6621a3413b8807): Use buffer concat in encrypt/decrypt; encrypt/decrypt now return buffers
 
-Pull Request: [PR #24](https://github.com/ethereumjs/keythereum/pull/24)
-
-Remove the `elliptic` library as a dependency and throughout the codebase. 
+Unnecessary encoding/decoding steps have been removed from this function.  This function now returns a `Buffer` instead of a hexadecimal string.
 
 --------------------------------------------------
 
-### <a id="heading-3.2.3"/> Simplify isCipherAvailable
+#### `encrypt`
 
-Auditor: [Kirill Fomichev](https://github.com/fanatid)
+- [commit 016e0d1](https://github.com/ethereumjs/keythereum/commit/016e0d12da24af53063b8688bc6621a3413b8807): Use buffer concat in encrypt/decrypt; encrypt/decrypt now return buffers
 
-Pull Request: [PR #24](https://github.com/ethereumjs/keythereum/pull/28)
-
-Simplyfing the isCipherAvailable function by utilzing the `crypto` library. 
+Unnecessary encoding/decoding steps have been removed from this function.  String concatenation has been replaced with buffer concatenation.  This function now returns a `Buffer` instead of a base64 string.
 
 --------------------------------------------------
 
-### <a id="heading-3.2.4"/> Remove ethereumjs-util
+#### `hex2utf16le`
 
-Auditor: [Kirill Fomichev](https://github.com/fanatid)
+- [PR #26](https://github.com/ethereumjs/keythereum/pull/26): Simplify hex2utf16le
+- [cdfece3](https://github.com/ethereumjs/keythereum/commit/cdfece32c721c10334b5e6bce3c88149a6eaeafb): Removed unused hex2utf16le function
 
-Pull Request: [PR #29](https://github.com/ethereumjs/keythereum/pull/29)
-
-Removing `ethereumjs-util` from `index.js` and `keys.js` as it is unneeded with the Keythereum library. 
-
---------------------------------------------------
-
-### <a id="heading-3.2.5"/> Simplify `create`
-
-Auditor: [Kirill Fomichev](https://github.com/fanatid)
-
-Pull Request: [PR #30](https://github.com/ethereumjs/keythereum/pull/30)
-
-Simplifying the creation of private keys and the generation of a random salt. 
+This function has been removed, as it is not needed for the [keccak](https://github.com/cryptocoinjs/keccak) module's input.
 
 --------------------------------------------------
 
-### <a id="heading-3.2.6"/> Remove validator package
+#### `isCipherAvailable`
 
-Auditor: [Kirill Fomichev](https://github.com/fanatid)
+- [PR #24](https://github.com/ethereumjs/keythereum/pull/28): Simplify isCipherAvailable
 
-Pull Request: [PR #31](https://github.com/ethereumjs/keythereum/pull/31)
-
-Removing the validator package and implimenting our own validators. 
+This function was edited to improve its readability.
 
 --------------------------------------------------
 
-### <a id="heading-3.2.7"/> Use `process.browser` directly
+#### `privateKeyToAddress`
 
-Auditor: [Kirill Fomichev](https://github.com/fanatid)
+- [commit 6557352](https://github.com/ethereumjs/keythereum/commit/65573528e55860d6e1f0f1729d0a75cd93cfe477) Left-pad private keys to 32 bytes; added more privateKeyToAddress test cases
 
-Pull Request: [PR #33](https://github.com/ethereumjs/keythereum/pull/33)
-
-Use the `process.browser` call directly.
+Test vectors from [go-ethereum](https://github.com/ethereum/go-ethereum)'s test data have been added to this function's tests.
 
 --------------------------------------------------
 
-### <a id="heading-3.2.8"/> Use `keccak` package
+#### `recover`
 
-Auditor: [Kirill Fomichev](https://github.com/fanatid)
+- [commit 7c52909](https://github.com/ethereumjs/keythereum/commit/7c52909aca9a6a913a06c461dbe740284507cd6e): Version 1 private keys can now be recovered; added isCipherAvailable check prior to encryption/decryption
+- [commit 495d0dd](https://github.com/ethereumjs/keythereum/commit/495d0ddaeacfd00232342aa91459a414e7fb638c): `.recover` should not affect `.constants`
+- [commit 6557352](https://github.com/ethereumjs/keythereum/commit/65573528e55860d6e1f0f1729d0a75cd93cfe477) Left-pad private keys to 32 bytes; added more privateKeyToAddress test cases
+- [commit 2b696be](https://github.com/ethereumjs/keythereum/commit/2b696bed35d4dbbce3470879ed3d7652fac6d2f0): Added test vectors from go-ethereum testdata
 
-Pull Request: [PR #35](https://github.com/ethereumjs/keythereum/pull/35)
-
-Use the `keccak.js` package directly. 
+This function now supports recovery (decryption) of version 1 private keys, the original encrypted private key format used for Ethereum keys before Olympic.  `recover` no longer modifies `keythereum.constants`.  Private keys that are less than 32 bytes now work correctly with this function.  Test vectors from [go-ethereum](https://github.com/ethereum/go-ethereum)'s test data have been added to this function's test cases.
 
 --------------------------------------------------
 
-# <a id="heading-4"/> Overall Feedback & Auditors
+#### `str2buf`
+
+- [PR #25](https://github.com/ethereumjs/keythereum/pull/25): Simplify code with checks
+- [commit 2bdf6c4](https://github.com/ethereumjs/keythereum/commit/2bdf6c433b92a5bc77e334c085bf0ed388ab6e4f): Export and unit test str2buf and hex2utf16le; use Buffer.from instead of new Buffer
+
+This function has been simplified, added to keythereum's public API, and included in unit tests.
+
+--------------------------------------------------
+
+# <a id="heading-4"/> Auditors
 
 ## <a id="heading-4.1"/> Gustav Simonsson
 
 * [Github](https://github.com/Gustav-Simonsson)
 * [Twitter](https://twitter.com/classygustav)
 
->Looks good, can’t find anything wrong on first pass through code. Maybe worth double checking by running tests also against these fixtures – if padding always works, e.g. if a generated key is less than 32 bytes (I’m guessing this would have been caught by the exhaustive tests though).
-
-## <a id="heading-4.2"/> Aaron Davis
-
-* [GitHub](https://github.com/kumavis)
-* [Twitter](https://twitter.com/kumavis_)
-
-> ANYTHING?
-
 ## <a id="heading-4.3"/> Maciej Hirsz
 
 * [Github](https://github.com/maciejhirsz)
 * [Twitter](https://twitter.com/maciejhirsz)
 
-> ANYTHING?
-
 ## <a id="heading-4.4"/> Kirill Fomichev
 
 * [Github](https://github.com/fanatid)
 * [Twitter](https://twitter.com/_fanatid)
-
-> ANYTHING?
