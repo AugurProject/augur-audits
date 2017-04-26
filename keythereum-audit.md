@@ -142,17 +142,17 @@ This function has been simplified, added to keythereum's public API, and include
 
 # <a id="heading-4"/> Auditors
 
-## <a id="heading-4.1"/> Gustav Simonsson
+## <a id="heading-4.4"/> Kirill Fomichev
 
-* [Github](https://github.com/Gustav-Simonsson)
-* [Twitter](https://twitter.com/classygustav)
+* [Github](https://github.com/fanatid)
+* [Twitter](https://twitter.com/_fanatid)
 
 ## <a id="heading-4.3"/> Maciej Hirsz
 
 * [Github](https://github.com/maciejhirsz)
 * [Twitter](https://twitter.com/maciejhirsz)
 
-## <a id="heading-4.4"/> Kirill Fomichev
+## <a id="heading-4.1"/> Gustav Simonsson
 
-* [Github](https://github.com/fanatid)
-* [Twitter](https://twitter.com/_fanatid)
+* [Github](https://github.com/Gustav-Simonsson)
+* [Twitter](https://twitter.com/classygustav)
