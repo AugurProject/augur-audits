@@ -23,7 +23,7 @@
 	* 4.1 - [Gustav Simonsson](#heading-4.1)
 	* 4.2 - [Aaron Davis](#heading-4.2)
 	* 4.3 - [Maciej Hirsz](#heading-4.3)
-	* 4.4 - [Krill Fomichev](#heading-4.4)
+	* 4.4 - [Kirill Fomichev](#heading-4.4)
 
 # <a id="heading-1"/> Introduction
 
@@ -72,7 +72,7 @@ Outlined below are detailed findings of the Keythereum audit:
 
 ### <a id="heading-3.1.1"/> `str2buf`
 
-Auditor: [Maciej Hirsz](github.com/maciejhirsz) and [Krill Fomichev](https://github.com/fanatid)
+Auditor: [Maciej Hirsz](github.com/maciejhirsz) and [Kirill Fomichev](https://github.com/fanatid)
 
 Pull Request: [PR #25](https://github.com/ethereumjs/keythereum/pull/25)
 
@@ -104,7 +104,7 @@ This is a pure function, which is a unit test heaven. It's however not exposed i
 
 ### <a id="heading-3.1.2"/> `hex2utf16le`
 
-Auditor: [Maciej Hirsz](github.com/maciejhirsz) and [Krill Fomichev](https://github.com/fanatid)
+Auditor: [Maciej Hirsz](github.com/maciejhirsz) and [Kirill Fomichev](https://github.com/fanatid)
 
 Pull Request: [PR #26](https://github.com/ethereumjs/keythereum/pull/26)
 
@@ -187,7 +187,7 @@ Additionally when it does fail, it does not throw an informative exception, it j
 
 ### <a id="heading-3.2.2"/> Remove elliptic
 
-Auditor: [Krill Fomichev](https://github.com/fanatid)
+Auditor: [Kirill Fomichev](https://github.com/fanatid)
 
 Pull Request: [PR #24](https://github.com/ethereumjs/keythereum/pull/24)
 
@@ -197,7 +197,7 @@ Remove the `elliptic` library as a dependency and throughout the codebase.
 
 ### <a id="heading-3.2.3"/> Simplify isCipherAvailable
 
-Auditor: [Krill Fomichev](https://github.com/fanatid)
+Auditor: [Kirill Fomichev](https://github.com/fanatid)
 
 Pull Request: [PR #24](https://github.com/ethereumjs/keythereum/pull/28)
 
@@ -207,7 +207,7 @@ Simplyfing the isCipherAvailable function by utilzing the `crypto` library.
 
 ### <a id="heading-3.2.4"/> Remove ethereumjs-util
 
-Auditor: [Krill Fomichev](https://github.com/fanatid)
+Auditor: [Kirill Fomichev](https://github.com/fanatid)
 
 Pull Request: [PR #29](https://github.com/ethereumjs/keythereum/pull/29)
 
@@ -217,7 +217,7 @@ Removing `ethereumjs-util` from `index.js` and `keys.js` as it is unneeded with 
 
 ### <a id="heading-3.2.5"/> Simplify `create`
 
-Auditor: [Krill Fomichev](https://github.com/fanatid)
+Auditor: [Kirill Fomichev](https://github.com/fanatid)
 
 Pull Request: [PR #30](https://github.com/ethereumjs/keythereum/pull/30)
 
@@ -227,7 +227,7 @@ Simplifying the creation of private keys and the generation of a random salt.
 
 ### <a id="heading-3.2.6"/> Remove validator package
 
-Auditor: [Krill Fomichev](https://github.com/fanatid)
+Auditor: [Kirill Fomichev](https://github.com/fanatid)
 
 Pull Request: [PR #31](https://github.com/ethereumjs/keythereum/pull/31)
 
@@ -237,7 +237,7 @@ Removing the validator package and implimenting our own validators.
 
 ### <a id="heading-3.2.7"/> Use `process.browser` directly
 
-Auditor: [Krill Fomichev](https://github.com/fanatid)
+Auditor: [Kirill Fomichev](https://github.com/fanatid)
 
 Pull Request: [PR #33](https://github.com/ethereumjs/keythereum/pull/33)
 
@@ -247,7 +247,7 @@ Use the `process.browser` call directly.
 
 ### <a id="heading-3.2.8"/> Use `keccak` package
 
-Auditor: [Krill Fomichev](https://github.com/fanatid)
+Auditor: [Kirill Fomichev](https://github.com/fanatid)
 
 Pull Request: [PR #35](https://github.com/ethereumjs/keythereum/pull/35)
 
@@ -278,7 +278,7 @@ Use the `keccak.js` package directly.
 
 > ANYTHING?
 
-## <a id="heading-4.4"/> Krill Fomichev
+## <a id="heading-4.4"/> Kirill Fomichev
 
 * [Github](https://github.com/fanatid)
 * [Twitter](https://twitter.com/_fanatid)
