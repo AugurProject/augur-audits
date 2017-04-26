@@ -31,18 +31,13 @@ The Keythereum library has been audited by [Kirill Fomichev](https://github.com/
 
 ## <a id="heading-1.1"/> Authenticity
 
-This document has been cryptographically signed by the Forecast Foundation to ensure it hasn't been tampered with. The signature can be verified using our public key, linked on Augur.net below.
-
-[Forecast Foundations PGP Key](https://augur.net/pgp.txt)
-
+This document has been cryptographically signed by the Forecast Foundation to ensure it hasn't been tampered with. The signature can be verified using our [PGP public key](https://augur.net/pgp.txt).
 
 ## <a id="heading-1.2"/> About Keythereum
 
-The primary repository for [Keythereum](https://github.com/ethereumjs/keythereum) can be found in the [EthereumJS](https://github.com/ethereumjs) team repository on GitHub.
+Keythereum is a JavaScript tool to generate, import and export Ethereum keys. This provides a simple way to use the same account locally and in web wallets. It can be used for verifiable cold storage wallets.  Keythereum uses the same key derivation functions (PBKDF2-SHA256 or scrypt), symmetric ciphers (AES-128-CTR or AES-128-CBC), and message authentication codes as geth. You can export your generated key to file, copy it to your data directory's keystore, and immediately start using it in your local Ethereum client.
 
-> Keythereum is a JavaScript tool to generate, import and export Ethereum keys. This provides a simple way to use the same account locally and in web wallets. It can be used for verifiable cold storage wallets.
-
-Keythereum uses the same key derivation functions (PBKDF2-SHA256 or scrypt), symmetric ciphers (AES-128-CTR or AES-128-CBC), and message authentication codes as geth. You can export your generated key to file, copy it to your data directory's keystore, and immediately start using it in your local Ethereum client.
+The [keythereum](https://github.com/ethereumjs/keythereum) repository lives in the [ethereumjs](https://github.com/ethereumjs) group on GitHub.
 
 # <a id="heading-2"/> Overview
 
