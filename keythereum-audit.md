@@ -6,19 +6,17 @@
 * 2 - [Overview](#heading-2)
     * 2.1 - [Source Code](#heading-2.1)
 * 3 - [Audit Results](#heading-3)
-    * 3.1 - [Detailed Findings](#heading-3.1)
-		* 3.1.1 - [`str2buf`](#heading-3.1.1)
-		* 3.1.2 - [`hex2utf16le`](#heading-3.1.2)
-		* 3.1.3 - [`encrypt`](#heading-3.1.3)
-	* 3.2 - [General Findings](#heading-3.2)
-		* 3.2.1 - [`deriveKey` silently fails for empty passwords](#heading-3.2.1)
-		* 3.2.2 - [Remove elliptic](#heading-3.2.2)
-		* 3.2.3 - [Simplify isCipherAvailable](#heading-3.2.3)
-		* 3.2.4 - [Remove `ethereumjs-util`](#heading-3.2.4)
-		* 3.2.5 - [Simplify `create`](#heading-3.2.5)
-		* 3.2.6 - [Remove validator package](#heading-3.2.6)
-		* 3.2.7 - [Use `process.browser` directly](#heading-3.2.7)
-		* 3.2.8 - [Use `keccak` package](#heading-3.2.8)
+	* 3.1.1 - [`str2buf`](#heading-3.1.1)
+	* 3.1.2 - [`hex2utf16le`](#heading-3.1.2)
+	* 3.1.3 - [`encrypt`](#heading-3.1.3)
+	* 3.2.1 - [`deriveKey` silently fails for empty passwords](#heading-3.2.1)
+	* 3.2.2 - [Remove elliptic](#heading-3.2.2)
+	* 3.2.3 - [Simplify isCipherAvailable](#heading-3.2.3)
+	* 3.2.4 - [Remove `ethereumjs-util`](#heading-3.2.4)
+	* 3.2.5 - [Simplify `create`](#heading-3.2.5)
+	* 3.2.6 - [Remove validator package](#heading-3.2.6)
+	* 3.2.7 - [Use `process.browser` directly](#heading-3.2.7)
+	* 3.2.8 - [Use `keccak` package](#heading-3.2.8)
 * 4 - [Overall Feedback & Auditors](#heading-4)
 	* 4.1 - [Kirill Fomichev](#heading-4.1)
   * 4.2 - [Maciej Hirsz](#heading-4.2)
@@ -35,7 +33,7 @@ This document has been cryptographically signed by the Forecast Foundation to en
 
 ## <a id="heading-1.2"/> About Keythereum
 
-Keythereum is a JavaScript tool to generate, import and export Ethereum keys. This provides a simple way to use the same account locally and in web wallets. It can be used for verifiable cold storage wallets.  Keythereum uses the same key derivation functions (PBKDF2-SHA256 or scrypt), symmetric ciphers (AES-128-CTR or AES-128-CBC), and message authentication codes as geth. You can export your generated key to file, copy it to your data directory's keystore, and immediately start using it in your local Ethereum client.
+Keythereum is a JavaScript tool to generate, import and export Ethereum keys.  This provides a simple way to use the same account locally and in web wallets.  It can be used for verifiable cold storage wallets.  Keythereum uses the same key derivation functions, symmetric ciphers, and message authentication codes as [geth](https://github.com/ethereum/go-ethereum).
 
 # <a id="heading-2"/> Overview
 
@@ -51,14 +49,7 @@ The audit covered the following source files:
 
 # <a id="heading-3"/> Audit Results
 
-This section contains the issues, improvements, and fixes that have been addressed and outlined by the Keytheruem auditors. 
-
-
-## <a id="heading-3.1"/> Detailed Findings
-
-Outlined below are detailed findings of the Keythereum audit: 
-
---------------------------------------------------
+## Summary
 
 ### <a id="heading-3.1.1"/> `str2buf`
 
@@ -66,29 +57,9 @@ Auditor: [Maciej Hirsz](github.com/maciejhirsz) and [Kirill Fomichev](https://gi
 
 Pull Request: [PR #25](https://github.com/ethereumjs/keythereum/pull/25)
 
-#### No fast-fail mechanism: 
+#### Summary
 
-The function will only process Strings, and otherwise return any value passed unchanged. If I misuse the function and do something along the lines of:
-
-```js
-const notAString = 5;
-
-doSomethingWithABuffer(str2buf(notAString));
-```
-
-I will, hopefully, get an exception that something is amiss down in the guts of `doSomethingWithABuffer`. The problem here is that the actual error - passing a number where a string was expected - isn't detected until much later in the execution of the program. Any situation where the execution continues while operating on erroneous data is far worse than throwing an error. An informative error here would helping the developer using the function find the fault at the level where it occurs in shorter time.
-
-In case a situation where a `Buffer` is passed into the function should be allowed, and that `Buffer` should then be returned unchanged, such a situation should be handled explicitly.
-
-#### Potential correctness issues when the format isn't easy to deduct:
-
-Consider a string `deadbeef` - is it a buffer serialized as hexadecimal or base64? Turns out, it can be either. The probability of a situation where a buffer is encoded as base64 and then incorrectly parsed as hexadecimal is insanely low for buffers of any reasonable length (32 bytes for private keys should virtually be unaffected), yet still - a chance of an error equal to 0 would be preferable.
-
-This might be good for the end user who has to deal with the implementation, but the checks made are completely unnecessary in the inner-workings of the library where the encoding is (should be) known beforehand, more on that later.
-
-#### No unit tests:
-
-This is a pure function, which is a unit test heaven. It's however not exposed in the API, and thus not tested.
+This function has been simplified and added to keythereum's public API.  Detailed unit tests were added for `str2buf` in `test/keys.js`.
 
 --------------------------------------------------
 
@@ -108,29 +79,6 @@ This function has been removed from keythereum, since it is now using a [keccak]
 
 Auditor: [Maciej Hirsz](github.com/maciejhirsz)
 
-```js
-  /**
-   * Symmetric private key encryption using secret (derived) key.
-   * @param {buffer|string} plaintext Text to be encrypted.
-   * @param {buffer|string} key Secret key.
-   * @param {buffer|string} iv Initialization vector.
-   * @param {string=} algo Encryption algorithm (default: constants.cipher).
-   * @return {string} Base64 encrypted text.
-   */
-  encrypt: function (plaintext, key, iv, algo) {
-    var cipher, ciphertext;
-
-    if (plaintext.constructor === String) plaintext = str2buf(plaintext);
-    if (key.constructor === String) key = str2buf(key);
-    if (iv.constructor === String) iv = str2buf(iv);
-
-    cipher = crypto.createCipheriv(algo || this.constants.cipher, key, iv);
-    ciphertext = cipher.update(plaintext.toString("hex"), "hex", "base64");
-
-    return ciphertext + cipher.final("base64");
-  },
- ```
- 
 #### Input and output encoding:
 
 Kind of following on `str2buf` issues described above. `plaintext` is described as "Text to be encrypted". The correct description should be "Data to be encrypted". The use of the word "text" would suggest that I can safely pass any JavaScript string and have it encrypted, however I have no guarantee how that encryption will proceed, will my text be converted to a buffer using a base64, hexadecimal or a utf8 codec?
@@ -154,8 +102,6 @@ ASCII `"fooba"` encoded to base64 produces `"Zm9vYmE="`. ASCII `"r"` encoded to 
 The results should be concatenated as buffers using `Buffer.concat`, and only then encoded, if necessary.
 
 --------------------------------------------------
-
-## <a id="heading-3.2"/> General Findings
 
 ### <a id="heading-3.2.1"/> `deriveKey` silently fails for empty passwords
 
