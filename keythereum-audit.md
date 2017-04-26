@@ -4,20 +4,21 @@
     * 1.1 - [Authenticity](#heading-1.1)
     * 1.2 - [About Keythereum](#heading-1.2)
 * 2 - [Overview](#heading-2)
-    * 2.1 - [Source Code](#heading-2.1)
 * 3 - [Audit Results](#heading-3)
-	* 3.1.1 - [`str2buf`](#heading-3.1.1)
-	* 3.1.2 - [`hex2utf16le`](#heading-3.1.2)
-	* 3.1.3 - [`encrypt`](#heading-3.1.3)
-	* 3.2.1 - [`deriveKey` silently fails for empty passwords](#heading-3.2.1)
-	* 3.2.2 - [Remove elliptic](#heading-3.2.2)
-	* 3.2.3 - [Simplify isCipherAvailable](#heading-3.2.3)
-	* 3.2.4 - [Remove `ethereumjs-util`](#heading-3.2.4)
-	* 3.2.5 - [Simplify `create`](#heading-3.2.5)
-	* 3.2.6 - [Remove validator package](#heading-3.2.6)
-	* 3.2.7 - [Use `process.browser` directly](#heading-3.2.7)
-	* 3.2.8 - [Use `keccak` package](#heading-3.2.8)
-* 4 - [Overall Feedback & Auditors](#heading-4)
+	* 3.1 - Changes to dependencies
+    * 3.1.1 - Dependencies added
+    * 3.1.2 - Dependencies removed
+  * 3.2 - Changes to functions
+    * 3.2.1 - `create`
+    * 3.2.2 - `decrypt`
+    * 3.2.3 - `deriveKey`
+    * 3.2.4 - `encrypt`
+    * 3.2.5 - `hex2utf16le`
+    * 3.2.6 - `isCipherAvailable`
+    * 3.2.7 - `privateKeyToAddress`
+    * 3.2.8 - `recover`
+    * 3.2.9 - `str2buf`
+* 4 - [Auditors](#heading-4)
 	* 4.1 - [Kirill Fomichev](#heading-4.1)
   * 4.2 - [Maciej Hirsz](#heading-4.2)
   * 4.3 - [Gustav Simonsson](#heading-4.3)
@@ -37,8 +38,6 @@ Keythereum is a JavaScript tool to generate, import and export Ethereum keys.  T
 
 # <a id="heading-2"/> Overview
 
-## <a id="heading-2.1"/>Source Code
-
 The [keythereum](https://github.com/ethereumjs/keythereum) repository lives in the [ethereumjs](https://github.com/ethereumjs) group on GitHub.  Source code is publicly available in the repository's `master` branch.
 
 The audit covered the following source files:
@@ -51,11 +50,11 @@ The audit covered the following source files:
 
 ### Changes to dependencies
 
-#### Added
+#### Dependencies added
 
 - [cryptocoinjs/keccak](https://github.com/cryptocoinjs/keccak): [PR #35](https://github.com/ethereumjs/keythereum/pull/35)
 
-#### Removed
+#### Dependencies removed
 
 - [indutny/elliptic](https://github.com/indutny/elliptic): [PR #24](https://github.com/ethereumjs/keythereum/pull/24)
 - [ethereumjs/ethereumjs-util](https://github.com/ethereumjs/ethereumjs-util): [PR #29](https://github.com/ethereumjs/keythereum/pull/29)
@@ -74,19 +73,19 @@ This function was simplified and edited to improve its readability.
 
 --------------------------------------------------
 
-#### `deriveKey`
-
-- [PR #20](https://github.com/ethereumjs/keythereum/issues/20) deriveKey silently fails for empty passwords
-
-An initial check for `undefined` or `null` has been added to `deriveKey`.  This function now throws an `"Must provide password and salt to derive a key"` error if password or salt are not provided.
-
---------------------------------------------------
-
 #### `decrypt`
 
 - [commit 016e0d1](https://github.com/ethereumjs/keythereum/commit/016e0d12da24af53063b8688bc6621a3413b8807): Use buffer concat in encrypt/decrypt; encrypt/decrypt now return buffers
 
 Unnecessary encoding/decoding steps have been removed from this function.  This function now returns a `Buffer` instead of a hexadecimal string.
+
+--------------------------------------------------
+
+#### `deriveKey`
+
+- [PR #20](https://github.com/ethereumjs/keythereum/issues/20) deriveKey silently fails for empty passwords
+
+An initial check for `undefined` or `null` has been added to `deriveKey`.  This function now throws an `"Must provide password and salt to derive a key"` error if password or salt are not provided.
 
 --------------------------------------------------
 
