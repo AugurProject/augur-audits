@@ -98,7 +98,7 @@ Unnecessary encoding/decoding steps have been removed from this function.  Strin
 ### `hex2utf16le`
 
 - [PR #26](https://github.com/ethereumjs/keythereum/pull/26): Simplify hex2utf16le
-- [cdfece3](https://github.com/ethereumjs/keythereum/commit/cdfece32c721c10334b5e6bce3c88149a6eaeafb): Removed unused hex2utf16le function
+- [commit cdfece3](https://github.com/ethereumjs/keythereum/commit/cdfece32c721c10334b5e6bce3c88149a6eaeafb): Removed unused hex2utf16le function
 
 This function has been removed, as it is not needed for the [keccak](https://github.com/cryptocoinjs/keccak) module's input.
 
