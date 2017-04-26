@@ -20,14 +20,14 @@
 		* 3.2.7 - [Use `process.browser` directly](#heading-3.2.7)
 		* 3.2.8 - [Use `keccak` package](#heading-3.2.8)
 * 4 - [Overall Feedback & Auditors](#heading-4)
-	* 4.1 - [Gustav Simonsson](#heading-4.1)
-	* 4.2 - [Aaron Davis](#heading-4.2)
-	* 4.3 - [Maciej Hirsz](#heading-4.3)
-	* 4.4 - [Kirill Fomichev](#heading-4.4)
+	* 4.1 - [Kirill Fomichev](#heading-4.1)
+  * 4.2 - [Maciej Hirsz](#heading-4.2)
+  * 4.3 - [Gustav Simonsson](#heading-4.3)
+
 
 # <a id="heading-1"/> Introduction
 
-The Keythereum library has been audited by Gustav Simonsson, Aaron Davis, Maciej Hirsz and Kirill Fomichev during the month of March and April of 2017. The findings of the audit are presented in this document. 
+The Keythereum library has been audited by [Kirill Fomichev](https://github.com/fanatid), [Maciej Hirsz](https://github.com/maciejhirsz), and [Gustav Simonsson](https://github.com/gustav-simonsson) during March to April 2017. The findings of the audit are presented in this document.
 
 ## <a id="heading-1.1"/> Authenticity
 
