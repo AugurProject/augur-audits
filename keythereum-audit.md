@@ -48,13 +48,13 @@ The audit covered the following source files:
 
 # <a id="heading-3"/> Audit Results
 
-### Changes to dependencies
+## Changes to dependencies
 
-#### Dependencies added
+### Dependencies added
 
 - [cryptocoinjs/keccak](https://github.com/cryptocoinjs/keccak): [PR #35](https://github.com/ethereumjs/keythereum/pull/35)
 
-#### Dependencies removed
+### Dependencies removed
 
 - [indutny/elliptic](https://github.com/indutny/elliptic): [PR #24](https://github.com/ethereumjs/keythereum/pull/24)
 - [ethereumjs/ethereumjs-util](https://github.com/ethereumjs/ethereumjs-util): [PR #29](https://github.com/ethereumjs/keythereum/pull/29)
@@ -63,9 +63,9 @@ The audit covered the following source files:
 
 --------------------------------------------------
 
-### Changes to functions
+## Changes to functions
 
-#### `create`
+### `create`
 
 - [PR #30](https://github.com/ethereumjs/keythereum/pull/30): Simplify create
 
@@ -73,7 +73,7 @@ This function was simplified and edited to improve its readability.
 
 --------------------------------------------------
 
-#### `decrypt`
+### `decrypt`
 
 - [commit 016e0d1](https://github.com/ethereumjs/keythereum/commit/016e0d12da24af53063b8688bc6621a3413b8807): Use buffer concat in encrypt/decrypt; encrypt/decrypt now return buffers
 
@@ -81,7 +81,7 @@ Unnecessary encoding/decoding steps have been removed from this function.  This 
 
 --------------------------------------------------
 
-#### `deriveKey`
+### `deriveKey`
 
 - [PR #20](https://github.com/ethereumjs/keythereum/issues/20) deriveKey silently fails for empty passwords
 
@@ -89,7 +89,7 @@ An initial check for `undefined` or `null` has been added to `deriveKey`.  This 
 
 --------------------------------------------------
 
-#### `encrypt`
+### `encrypt`
 
 - [commit 016e0d1](https://github.com/ethereumjs/keythereum/commit/016e0d12da24af53063b8688bc6621a3413b8807): Use buffer concat in encrypt/decrypt; encrypt/decrypt now return buffers
 
@@ -97,7 +97,7 @@ Unnecessary encoding/decoding steps have been removed from this function.  Strin
 
 --------------------------------------------------
 
-#### `hex2utf16le`
+### `hex2utf16le`
 
 - [PR #26](https://github.com/ethereumjs/keythereum/pull/26): Simplify hex2utf16le
 - [cdfece3](https://github.com/ethereumjs/keythereum/commit/cdfece32c721c10334b5e6bce3c88149a6eaeafb): Removed unused hex2utf16le function
@@ -106,7 +106,7 @@ This function has been removed, as it is not needed for the [keccak](https://git
 
 --------------------------------------------------
 
-#### `isCipherAvailable`
+### `isCipherAvailable`
 
 - [PR #24](https://github.com/ethereumjs/keythereum/pull/28): Simplify isCipherAvailable
 
@@ -114,7 +114,7 @@ This function was edited to improve its readability.
 
 --------------------------------------------------
 
-#### `privateKeyToAddress`
+### `privateKeyToAddress`
 
 - [commit 6557352](https://github.com/ethereumjs/keythereum/commit/65573528e55860d6e1f0f1729d0a75cd93cfe477) Left-pad private keys to 32 bytes; added more privateKeyToAddress test cases
 
@@ -122,7 +122,7 @@ Test vectors from [go-ethereum](https://github.com/ethereum/go-ethereum)'s test 
 
 --------------------------------------------------
 
-#### `recover`
+### `recover`
 
 - [commit 7c52909](https://github.com/ethereumjs/keythereum/commit/7c52909aca9a6a913a06c461dbe740284507cd6e): Version 1 private keys can now be recovered; added isCipherAvailable check prior to encryption/decryption
 - [commit 495d0dd](https://github.com/ethereumjs/keythereum/commit/495d0ddaeacfd00232342aa91459a414e7fb638c): `.recover` should not affect `.constants`
@@ -133,7 +133,7 @@ This function now supports recovery (decryption) of version 1 private keys, the 
 
 --------------------------------------------------
 
-#### `str2buf`
+### `str2buf`
 
 - [PR #25](https://github.com/ethereumjs/keythereum/pull/25): Simplify code with checks
 - [commit 2bdf6c4](https://github.com/ethereumjs/keythereum/commit/2bdf6c433b92a5bc77e334c085bf0ed388ab6e4f): Export and unit test str2buf and hex2utf16le; use Buffer.from instead of new Buffer
