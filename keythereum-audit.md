@@ -76,25 +76,6 @@ Auditor: [Maciej Hirsz](github.com/maciejhirsz) and [Krill Fomichev](https://git
 
 Pull Request: [PR #25](https://github.com/ethereumjs/keythereum/pull/25)
 
-```js
-// convert string to buffer
-function str2buf(str, enc) {
-  if (str.constructor === String) {
-    if (enc) {
-      str = new Buffer(str, enc);
-    } else {
-      if (validator.isHexadecimal(str)) {
-        str = new Buffer(str, "hex");
-      } else if (validator.isBase64(str)) {
-        str = new Buffer(str, "base64");
-      } else {
-        str = new Buffer(str);
-      }
-    }
-  }
-  return str;
-}
-```
 #### No fast-fail mechanism: 
 
 The function will only process Strings, and otherwise return any value passed unchanged. If I misuse the function and do something along the lines of:
@@ -127,33 +108,9 @@ Auditor: [Maciej Hirsz](github.com/maciejhirsz) and [Krill Fomichev](https://git
 
 Pull Request: [PR #26](https://github.com/ethereumjs/keythereum/pull/26)
 
-```js
-// convert hex to UTF-16LE
-function hex2utf16le(input) {
-  var i, l;
-  var output = "";
-  for (i = 0, l = input.length; i < l; i += 4) {
-    output += "\\u" + input.slice(i+2, i+4) + input.slice(i, i+2);
-  }
-  return JSON.parse("\"" + output + "\"");
-}
-```
+#### Summary
 
-#### Naming:
-
-First of all, the name of the function (and the comment above it) doesn't accurately describe what the function does. What I would expect a product of the function to be is a buffer representing unicode text as binary utf16 little-endian buffer. This is not what this function does. It's taking a hex-encoded utf16le binary buffer as input and produces a JavaScript `String` (which is incidentally stored as UTF-16, with endianess depending on the hardware). A more fitting name would be a variation of `utf16leHex2str`, although I'd suggest changing it entirely to `utf16le2str`, accepting `Buffer` type as input and, optionally, converting `String` inputs to buffers with `hex` being the assumed encoding.
-
-#### No fast-fail mechanism:
-
-This function only works if the supplied input is not just a hexadecimal representation of a buffer, but also that buffer has to have length dividable by 2 (or in case of the hexadecimal string - 4). Should that constraint be violated, the conversion happily continues until it crashes at `JSON.parse` with an `uninformative unexpected` token exception. This has actually happened to me as I was trying to put Keythereum into a web worker, and didn't correctly serialize and deserialize a private key buffer (on a much higher level API) to be passed through as JSON message between processes. A quick check if the length of the input is divisible would at least partially remedy that situation.
-
-#### Implementation details:
-
-Using `JSON.parse` here, while being a workable solution, seems like a misuse to me. JavaScript exposes an API for converting UTF-16 charcodes to characters via `String.fromCharCode`, using which would likely result in a better performance on top of making the intent clearer.
-
-#### No unit tests:
-
-Again, a pure function that is critical to the correctness, it should be unit-tested.
+This function has been removed from keythereum, since it is now using a [keccak](https://github.com/cryptocoinjs/keccak) module that accepts a raw `Buffer` (byte array) input.
 
 --------------------------------------------------
 
