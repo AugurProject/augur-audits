@@ -57,14 +57,7 @@ This audit covers the following source files:
 
 - `./index.js`
 - `./exports.js`
-- `./dist/keythereum.js`
-- `./dist/keythereum.min.js`
-- `./lib/scrypt.js`
 - `./test/keys.js`
-- `./test/geth.js`
-- `./test/checkKeyObj.js`
-- `./test/browser/index.html`
-
 
 # <a id="heading-3"/> Audit Results
 
