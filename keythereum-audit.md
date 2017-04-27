@@ -7,12 +7,12 @@
 * 3 - [Audit Results](#heading-3)
 	* 3.1 - [Changes to dependencies](#heading-3.1)
         * 3.1.2 - [Dependencies added](#heading-3.1.2)
-            * 3.1.2.1 - [`cryptocoinjs/keccak`](#heading-3.1.2.1)
+            * 3.1.1.1 - [`cryptocoinjs/keccak`](#heading-3.1.1.1)
         * 3.1.3 - [Dependencies removed](#heading-3.1.3)
-            * 3.1.3.1 - [`indutny/elliptic`](#heading-3.1.3.1)
-            * 3.1.3.2 - [`ethereumjs/ethereumjs-util`](#heading-3.1.3.2)
-            * 3.1.3.3 - [`chriso/validator`](#heading-3.1.3.3)
-            * 3.1.3.4 - [`drostie/sha3-js`](#heading-3.1.3.4)
+            * 3.1.2.1 - [`indutny/elliptic`](#heading-3.1.2.1)
+            * 3.1.2.2 - [`ethereumjs/ethereumjs-util`](#heading-3.1.2.2)
+            * 3.1.2.3 - [`chriso/validator`](#heading-3.1.2.3)
+            * 3.1.2.4 - [`drostie/sha3-js`](#heading-3.1.2.4)
     * 3.2 - [Changes to functions](#heading-3.2)
         * 3.2.1 - [`create`](#heading-3.2.1)
         * 3.2.2 - [`decrypt`](#heading-3.2.2)
@@ -55,16 +55,16 @@ The audit covered the following source files:
 
 ## <a id="heading-3.1"/> Changes to dependencies
 
-### <a id="heading-3.1.2"/> Dependencies added
+### <a id="heading-3.1.1"/> Dependencies added
 
-- <a id="heading-3.1.2.1"/> [cryptocoinjs/keccak](https://github.com/cryptocoinjs/keccak): [PR #35](https://github.com/ethereumjs/keythereum/pull/35)
+- <a id="heading-3.1.1.1"/> [cryptocoinjs/keccak](https://github.com/cryptocoinjs/keccak): [PR #35](https://github.com/ethereumjs/keythereum/pull/35)
 
-### <a id="heading-3.1.3"/> Dependencies removed
+### <a id="heading-3.1.2"/> Dependencies removed
 
-- <a id="heading-3.1.3.1"/> [indutny/elliptic](https://github.com/indutny/elliptic): [PR #24](https://github.com/ethereumjs/keythereum/pull/24)
-- <a id="heading-3.1.3.2"/> [ethereumjs/ethereumjs-util](https://github.com/ethereumjs/ethereumjs-util): [PR #29](https://github.com/ethereumjs/keythereum/pull/29)
-- <a id="heading-3.1.3.3"/> [chriso/validator](https://github.com/chriso/validator.js): [PR #31](https://github.com/ethereumjs/keythereum/pull/31)
-- <a id="heading-3.1.3.4"/> [drostie/sha3-js](https://github.com/drostie/sha3-js): [PR #35](https://github.com/ethereumjs/keythereum/pull/35)
+- <a id="heading-3.1.2.1"/> [indutny/elliptic](https://github.com/indutny/elliptic): [PR #24](https://github.com/ethereumjs/keythereum/pull/24)
+- <a id="heading-3.1.2.2"/> [ethereumjs/ethereumjs-util](https://github.com/ethereumjs/ethereumjs-util): [PR #29](https://github.com/ethereumjs/keythereum/pull/29)
+- <a id="heading-3.1.2.3"/> [chriso/validator](https://github.com/chriso/validator.js): [PR #31](https://github.com/ethereumjs/keythereum/pull/31)
+- <a id="heading-3.1.2.4"/> [drostie/sha3-js](https://github.com/drostie/sha3-js): [PR #35](https://github.com/ethereumjs/keythereum/pull/35)
 
 ## <a id="heading-3.2"/> Changes to functions
 
