@@ -164,20 +164,22 @@ This function has been simplified, added to keythereum's public API, and include
 
 * [Github](https://github.com/Gustav-Simonsson)
 * [Twitter](https://twitter.com/classygustav)
+
+
 -----BEGIN PGP SIGNATURE-----
 Comment: GPGTools - https://gpgtools.org
 
-iQIcBAEBCgAGBQJZAU5cAAoJEEJOD01Ku7vgxxIQAImqRdoJpQBuhBSmko0aHOZ7
-VDU734lR4n6HQ2awzStdrdNur3AC03sgcxwuC8zYrPFeP935Dc9xRB4XVZf5co3m
-uBnDCVjRYm8H172EsTyBKaM/PH9TTQ0ogwFxFIWo8zDtFrfbpV60SBjKOhixth8g
-2fCB/dSkz5N07uTfxCmpNMllLlLIvMBRpuhzJkkIFxqC9z6JvJUt9JExB1lm3McJ
-a5s+XJVneUSiQbhvxNibFckOkRfGSi3xymRwZuFuQI/0T/1F/s0PC4qa3w+VvdRT
-4fbME9nmDISvBZ/h7UixNpOaIts03hGQVhSvfUwOnB4fMW3eenmFrH5lHs8B5rG7
-aFE8KsfT3kHLFGUafJikRyKygcYf9yN12NMEdkyzyIPl6yeP8DVVWGzb6mYi8odJ
-heOmduc6OUYUMzAj9QlxoEbO8amdnEELM8f8ZMPfaIsJ6p+wgU+XpoAM6o9YNY5r
-YleSb7DYl7uy47gHc2eUa/qhjm7dMVvlkRq6tgAVdtI8ejd0AsKOpV5VuyueD0KY
-J6DRXA3fpl6tQvmzI5oRSW8oIZREPNaIc5hYItuPH0aoHC0Um8UcMA3U8vRz1V0X
-ln4OAGuWuozIVuDKxgi3Lz6UNHVbheVpohEc3awslMHX4tS27Ahv/K76MPPS/bWr
-SPAhXmswQL9AQ+hQmgq1
-=m6ND
+iQIcBAEBCgAGBQJZAU+uAAoJEEJOD01Ku7vg7oAP/31iiFHozPRTNgfo6bG8LbtT
+AUw3tMUDTxemeQ9YJohOHVHWS/VmcfFPB31YVUEUeZPInOJONxwXQz4bwVEuzCQp
+PgrAH87Y+qB0sWTkc0GFvMBpyVQBqJDudsy7bkfnsTXAsXwSHtEJnlyZe3pR7l4D
+o8aSHoN6nEXWNNQ7GuDo3lfV3bwHDVSPWOJrhAdJzEtdSMh+fx9/J/YAdf2DW9Tc
+7jeloPlMYE+fWRt7/6txNeLe/rQrgYubBY3LjjulYPcedjT4zB92yZLzX/7CRUqj
+SDAPTa2tA7yXABq5LVnZU4CS78sRuJsL5bzx9XEWQ3+ICLd77z7EIRljPSUy5ijm
+4UWrudlWPuVtLQ1u3480vAa1vWd9kHUBuaQnKd0S3MwZZ8zn9TPJXTi05KE9KjaV
+uZ+QcL8EmY/P0RsMSOoihaYWJSxF7xh+7/KtRejxGPcYX8I9nO/wudy6cMyW7r0h
+NlXaI/4ntpF7Juu5qsDJTkpFXOpTHKcKAZRg/gS9HilxxrrIUi1nrbfRbzrxOfY/
+JzstulC/DFTzAzpq4++8eungQyj1o729x3vy94BftIN+02mpsyE5LwHSuwDVFMRc
+PzUOxH2XF6yssUzjBt9mQLscAjee6fwDZXxuMlqH0WtlVvkoeZbgvXcC7h/zsiFs
+yBCQ3CkVozVjFbL1U1zP
+=jEQS
 -----END PGP SIGNATURE-----
