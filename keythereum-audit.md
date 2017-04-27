@@ -77,7 +77,7 @@ The audit covered the following source files:
 
 This function was simplified and edited to improve its readability.
 
-- --------------------------------------------------
+- - --------------------------------------------------
 
 ### <a id="heading-3.2.2"/> `decrypt`
 
@@ -85,7 +85,7 @@ This function was simplified and edited to improve its readability.
 
 Unnecessary encoding/decoding steps have been removed from this function.  This function now returns a `Buffer` instead of a hexadecimal string.
 
-- --------------------------------------------------
+- - --------------------------------------------------
 
 ### <a id="heading-3.2.3"/> `deriveKey`
 
@@ -93,7 +93,7 @@ Unnecessary encoding/decoding steps have been removed from this function.  This 
 
 An initial check for `undefined` or `null` has been added to `deriveKey`.  This function now throws an `"Must provide password and salt to derive a key"` error if password or salt are not provided.
 
-- --------------------------------------------------
+- - --------------------------------------------------
 
 ### <a id="heading-3.2.4"/> `encrypt`
 
@@ -101,7 +101,7 @@ An initial check for `undefined` or `null` has been added to `deriveKey`.  This 
 
 Unnecessary encoding/decoding steps have been removed from this function.  String concatenation has been replaced with buffer concatenation.  This function now returns a `Buffer` instead of a base64 string.
 
-- --------------------------------------------------
+- - --------------------------------------------------
 
 ### <a id="heading-3.2.5"/> `hex2utf16le`
 
@@ -110,7 +110,7 @@ Unnecessary encoding/decoding steps have been removed from this function.  Strin
 
 This function has been removed, as it is not needed for the [keccak](https://github.com/cryptocoinjs/keccak) module's input.
 
-- --------------------------------------------------
+- - --------------------------------------------------
 
 ### <a id="heading-3.2.6"/> `isCipherAvailable`
 
@@ -118,7 +118,7 @@ This function has been removed, as it is not needed for the [keccak](https://git
 
 This function was edited to improve its readability.
 
-- --------------------------------------------------
+- - --------------------------------------------------
 
 ### <a id="heading-3.2.7"/> `privateKeyToAddress`
 
@@ -126,7 +126,7 @@ This function was edited to improve its readability.
 
 Test vectors from [go-ethereum](https://github.com/ethereum/go-ethereum)'s test data have been added to this function's tests.
 
-- --------------------------------------------------
+- - --------------------------------------------------
 
 ### <a id="heading-3.2.8"/> `recover`
 
@@ -137,7 +137,7 @@ Test vectors from [go-ethereum](https://github.com/ethereum/go-ethereum)'s test 
 
 This function now supports recovery (decryption) of version 1 private keys, the original encrypted private key format used for Ethereum keys before Olympic.  `recover` no longer modifies `keythereum.constants`.  Private keys that are less than 32 bytes now work correctly with this function.  Test vectors from [go-ethereum](https://github.com/ethereum/go-ethereum)'s test data have been added to this function's test cases.
 
-- --------------------------------------------------
+- - --------------------------------------------------
 
 ### <a id="heading-3.2.9"/> `str2buf`
 
@@ -146,7 +146,7 @@ This function now supports recovery (decryption) of version 1 private keys, the 
 
 This function has been simplified, added to keythereum's public API, and included in unit tests.
 
-- --------------------------------------------------
+- - --------------------------------------------------
 
 # <a id="heading-4"/> Auditors
 
@@ -164,21 +164,20 @@ This function has been simplified, added to keythereum's public API, and include
 
 * [Github](https://github.com/Gustav-Simonsson)
 * [Twitter](https://twitter.com/classygustav)
-
 -----BEGIN PGP SIGNATURE-----
 Comment: GPGTools - https://gpgtools.org
 
-iQIcBAEBCgAGBQJZAUzjAAoJEEJOD01Ku7vgw6MQAIamRoB0LEMXGEx3CGg8rMz3
-5peFRBSBOHVn8pVsoV2552hDDjzKqYIKeFlK+MMhUWwjxRVIcN2pRFz4G/WRPHUG
-H/RuWJr6+Gppxip70kHvDcA/qUJ9VoB1CTq1/FQ6fcVnKvykRhajCTw5do781eqa
-uvCiaZrmpZT4sZ8JuM9O48c7A5t5PxypTRVRVm8A1qbS5ZMOjAUDLsCeMGAM3wVq
-h9VRkp4nQGDm2W6gwPuxXXAzcEHMsOgrNttWrXjCbhmkds6G4q9Vl4sKUuHeGSkV
-oo86CRgZSFM83KPi5YpzJIeLG2DM264GQMzyLHX9SzOvtKanMxdZaDZf68mli2G0
-atSTPkIcK6XTzsJKNRR5xvwJLbObscfDy6CW+sPy27+teSbO/S1twLyBlGmc+o0K
-1T7MkMmvz0yvL20R2g9GeDgTMl2KhxcPY47l2sQd613a/5xCQpjSOv5r6O06qnWI
-SNF8EJLJ0abyK9ySuGelFZBLhdrnpJjvZyavwF6mvGlyf2PaCcHYYz/w4KOx34RT
-8/EPzrTEoxQZ5bWcrAdznHG2DjELKoKiI/ePIIZ8sWV1G9i81fMAHarV0AhxiJfo
-ug9r/rRXUS+WdHuebHNt7x78eHBH3j8ukhiA+RmMwcE4KPc98IihR3vy0txPxaho
-Omj8h6ems7qC0cF25LoJ
-=hfqi
+iQIcBAEBCgAGBQJZAU5cAAoJEEJOD01Ku7vgxxIQAImqRdoJpQBuhBSmko0aHOZ7
+VDU734lR4n6HQ2awzStdrdNur3AC03sgcxwuC8zYrPFeP935Dc9xRB4XVZf5co3m
+uBnDCVjRYm8H172EsTyBKaM/PH9TTQ0ogwFxFIWo8zDtFrfbpV60SBjKOhixth8g
+2fCB/dSkz5N07uTfxCmpNMllLlLIvMBRpuhzJkkIFxqC9z6JvJUt9JExB1lm3McJ
+a5s+XJVneUSiQbhvxNibFckOkRfGSi3xymRwZuFuQI/0T/1F/s0PC4qa3w+VvdRT
+4fbME9nmDISvBZ/h7UixNpOaIts03hGQVhSvfUwOnB4fMW3eenmFrH5lHs8B5rG7
+aFE8KsfT3kHLFGUafJikRyKygcYf9yN12NMEdkyzyIPl6yeP8DVVWGzb6mYi8odJ
+heOmduc6OUYUMzAj9QlxoEbO8amdnEELM8f8ZMPfaIsJ6p+wgU+XpoAM6o9YNY5r
+YleSb7DYl7uy47gHc2eUa/qhjm7dMVvlkRq6tgAVdtI8ejd0AsKOpV5VuyueD0KY
+J6DRXA3fpl6tQvmzI5oRSW8oIZREPNaIc5hYItuPH0aoHC0Um8UcMA3U8vRz1V0X
+ln4OAGuWuozIVuDKxgi3Lz6UNHVbheVpohEc3awslMHX4tS27Ahv/K76MPPS/bWr
+SPAhXmswQL9AQ+hQmgq1
+=m6ND
 -----END PGP SIGNATURE-----
