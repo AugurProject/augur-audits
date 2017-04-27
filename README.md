@@ -1,6 +1,6 @@
 # augur-audits
 
-Summaries of audits conducted of Augurs codebase will be published here. 
+Summaries of findings from audits of the Augur codebase will be published here.
 
 ## Authenticity
 
@@ -14,4 +14,4 @@ The Keythereum audit is completed, however additional findings may arise. The re
 
 ## Contact
 
-Please reach out to [jack@augur.net](mailto:jack@augur.net) or [tom@augur.net](mailto:tom@augur.net) with any questions. 
+Please reach outg to [jack@augur.net](mailto:jack@augur.net) or [tom@augur.net](mailto:tom@augur.net) with any questions. 
