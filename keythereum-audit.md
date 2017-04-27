@@ -1,4 +1,5 @@
 -----BEGIN PGP SIGNED MESSAGE-----
+
 Hash: SHA512
 
 # Keythereum Security Audit<a id="heading-0"/>
@@ -166,6 +167,7 @@ This function has been simplified, added to keythereum's public API, and include
 * [Twitter](https://twitter.com/classygustav)
 
 -----BEGIN PGP SIGNATURE-----
+
 Comment: GPGTools - https://gpgtools.org
 
 iQIcBAEBCgAGBQJZAUhJAAoJEEJOD01Ku7vgkioP/ieDChkGQ8C6Gl25OMcv1Wk9
@@ -179,6 +181,9 @@ FcGZxIAlg5/YYX+m7RTWqAWwuweS8H3kRQvdTXniC4X3h8PtMoDXq27cz/qY8Cso
 sN0x1TgTgBGWC6+uk/2o+8eKsrcYvMZrWmjXOZJ+XKdsuir5bh+JDpjpiH5wHcJ+
 i03vxUiyrnfhpHPk0GaWDrBg8r+E9o2Qkcap48PV/MRHfE/FEl0mnqzLLO4rxTFQ
 JUe0JbmAO0zcBX3/v91Z409DiO0FfJq6pWhrJ/nq4l1kG7DfEBLtElEWUF2BIklh
+
 vO4d1zM2/Ze4EqHi5hua
+
 =Xe58
+
 -----END PGP SIGNATURE-----
