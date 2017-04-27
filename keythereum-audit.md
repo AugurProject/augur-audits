@@ -31,7 +31,7 @@
 
 # <a id="heading-1"/> Introduction
 
-The Keythereum library has been audited by [Kirill Fomichev](https://github.com/fanatid), [Maciej Hirsz](https://github.com/maciejhirsz), and [Gustav Simonsson](https://github.com/gustav-simonsson) during March-April 2017. The findings of the audit are presented in this document.
+The Keythereum library has been audited by [Kirill Fomichev](https://github.com/fanatid), [Maciej Hirsz](https://github.com/maciejhirsz), and [Gustav Simonsson](https://github.com/gustav-simonsson) during March-April 2017. The findings of the audit are presented in this document. This document will be updated if additional changes are made to Keythereum from the auditors findings.
 
 ## <a id="heading-1.1"/> Authenticity
 
