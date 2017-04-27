@@ -14,4 +14,4 @@ The Keythereum audit is completed, however additional findings may arise. The re
 
 ## Contact
 
-Please reach outg to [jack@augur.net](mailto:jack@augur.net) or [tom@augur.net](mailto:tom@augur.net) with any questions. 
+Please reach out to [jack@augur.net](mailto:jack@augur.net) or [tom@augur.net](mailto:tom@augur.net) with any questions. 
