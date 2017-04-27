@@ -1,17 +1,17 @@
-# keythereum-audit
+# augur-audits
 
-## TO-DO
+Summaries of audits conducted of Augurs codebase will be published here. 
 
-@jack
+## Authenticity
 
-* Missing PR for `encrypt` 3.1.3 feedback
-* Any additonal content to add to the "General Findings" sections? Most of the PR's were empty - tried to fill as much as I could in. 
-* Any general comments / overall feedback given by anyone expect Gustav?
-* Would we like to seperate these by "low/medium/high" risk, or is detailed and general sufficent segmentation?
+To validate the PGP signature of an audit report, view the `Raw` version of the markdown file. Copy it to a text file locally, and the signature will validate against our public key, found [here](http://www.augur.net/pgp.txt) and [here](https://github.com/tomkysar/augur-audits/blob/master/pgp.txt).
 
-@tom
+## Keythereum
 
-* PGP sign audit report w/ Foundations key when complete
-* ~~Check all links work~~
-* ~~Add authors section with their contact infomation~~
-* Make public repo in Augur `audit-reports` (?) that will contain all post-mortems?
+[Keythereum Audit Report](https://github.com/tomkysar/augur-audits/blob/master/keythereum-audit.md)
+
+The Keythereum audit is completed, however additional findings may arise. The report will be updated to reflect any additional changes made to the codebase with feedback we've recieved from the auditors. 
+
+### Contact
+
+Please reach out to [jack@augur.net](mailto:jack@augur.net) or [tom@augur.net](mailto:tom@augur.net) with any questions. 
