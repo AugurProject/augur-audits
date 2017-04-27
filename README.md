@@ -12,6 +12,6 @@ To validate the PGP signature of an audit report, view the `Raw` version of the 
 
 The Keythereum audit is completed, however additional findings may arise. The report will be updated to reflect any additional changes made to the codebase with feedback we've recieved from the auditors. 
 
-### Contact
+## Contact
 
 Please reach out to [jack@augur.net](mailto:jack@augur.net) or [tom@augur.net](mailto:tom@augur.net) with any questions. 
