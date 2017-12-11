@@ -7,7 +7,7 @@ Summaries of findings from audits of the Augur & Ethereum codebases will be publ
 The [Coinspect](https://coinspect.com) team was hired to review and audit the Solidity compiler. The final report was disclosed on **December 11th, 2017** at 10AM PST. 
 
 - [Audit Report](https://github.com/tomkysar/augur-audits/blob/master/solidity-compilier/Coinspect%20-%20Solidity%20Compiler%20Audit%20v1.0.pdf)
-- Augur Announcement
+- [Augur Announcement](https://medium.com/@AugurProject/solidity-compiler-audit-report-1832cedb50a8)
 
 ## Serpent Compiler
 The [Zeppelin Solutions](https://zeppelin.solutions) team was hired to review and audit the Serpent compiler. The final report was disclosed on **July 28th, 2017** at 10:01AM PST.
