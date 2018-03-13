@@ -2,6 +2,18 @@
 
 Summaries of findings from audits of the Augur & Ethereum codebases will be published here.
 
+## Augur Core
+
+The [Zeppelin](https://zeppelin.solutions) team was hired to review and audit Augur's core contracts. The Zeppelin team iterated with our changes and fixes three times, resulting in a final hash of: 
+
+`7f3c79a5dd471a98df8f66a640902e063f15f796`
+
+Both [LeastAuthority](https://leastauthority.com) and [Securify](https://securify.ch) (ChainSecurity) also performed audits on the Augur core codebase. However, they were performed on the inital set of contracts, with the hash of: 
+
+`45e1afb7eb1a895d923c97fe01e068c772c583ef`
+
+The Zeppelin report was disclosed on **March 12th, 2017** at 9:27AM PST. The LeastAuthroity and Securify reports were disclosed at time of this GitHub commit. 
+
 
 ## Solidity Compiler
 The [Coinspect](https://coinspect.com) team was hired to review and audit the Solidity compiler. The final report was disclosed on **December 11th, 2017** at 10AM PST. 
